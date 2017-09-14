@@ -63,7 +63,7 @@ export class AuthenticationService {
     }
 
     remindPassword(email: string) {
-        var changeUrl = this.router.createUrlTree(['/change-password']).toString();
+        var changeUrl = this.router.createUrlTree(['auth', 'change-password']).toString();
         return this.http.post(this.authUrl + '/reset-password', JSON.stringify({
             email: email,
             changeUrl: changeUrl
@@ -88,7 +88,7 @@ export class AuthenticationService {
     }
 
     register(data: any) {
-        data.confirmUrl = this.router.createUrlTree(['/confirm-email']).toString();
+        data.confirmUrl = this.router.createUrlTree(['auth', 'confirm-email']).toString();
         return this.http.post(this.authUrl + '/register', JSON.stringify(data), this.getHeaders());
     }
 }

@@ -1,0 +1,17 @@
+<md-toolbar color="primary">
+    <span class="header-fill-remaining-space"></span>
+
+    <span  *ngIf="profile._id">
+        <small>Hello {{ profile.fullName }} ({{ profile.email }})</small>
+
+        <button md-button (click)="logout()">
+            <span class="fa fa-sign-out"></span>
+            <span>Sign Out</span>
+        </button>
+    </span>
+
+    <span *ngIf="!profile._id">
+        <a routerLink="/auth/signin">Sign In</a> /
+        <a routerLink="/auth/signup">Sign Up</a>
+    </span>
+</md-toolbar>

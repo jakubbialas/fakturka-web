@@ -1,0 +1,40 @@
+<form #signUpForm="ngForm" (ngSubmit)="submit()">
+    <md-card>
+        <md-card-header>
+            <md-card-title>Sign up</md-card-title>
+        </md-card-header>
+
+        <md-card-content>
+            <md-form-field>
+                <input mdInput type="email" name="email" [(ngModel)]="data.email" placeholder="Email"
+                       #email="ngModel" required email>
+
+                <md-error *ngIf="email.errors?.email">Please enter a valid <strong>email</strong> address</md-error>
+                <md-error *ngIf="email.errors?.required">Email is <strong>required</strong></md-error>
+            </md-form-field>
+
+            <md-form-field>
+                <input mdInput type="password" name="password" [(ngModel)]="data.password" placeholder="Password"
+                       #password="ngModel" required minlength="4">
+
+                <md-error *ngIf="password.errors?.minlength">Password must be <strong>at least 4</strong> characters long</md-error>
+                <md-error *ngIf="password.errors?.required">Password is <strong>required</strong></md-error>
+            </md-form-field>
+
+            <md-form-field>
+                <input mdInput type="password" name="repeatPassword" [(ngModel)]="data.repeatPassword" placeholder="Repeat password"
+                       #repeatPassword="ngModel" required validateEqualTo="password">
+
+                <md-error *ngIf="repeatPassword.errors?.validateEqual">Passwords <strong>don't match</strong></md-error>
+                <md-error *ngIf="repeatPassword.errors?.required">Repeat password is <strong>required</strong></md-error>
+            </md-form-field>
+
+            <button md-raised-button color="primary" type="submit" [disabled]="!signUpForm.form.valid">
+                <span class="fa fa-sign-up"></span>
+                <span>Sign Up</span>
+            </button>
+
+            <a md-button routerLink="../signin" >Take me back to sign in page</a>
+        </md-card-content>
+    </md-card>
+</form>

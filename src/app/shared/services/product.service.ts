@@ -1,13 +1,15 @@
-import {Injectable} from '@angular/core';
-import {AuthHttp} from 'angular2-jwt';
+import { Injectable } from '@angular/core';
+import { AuthHttp } from 'angular2-jwt';
+import { environment } from '../../../environments/environment';
 
-import {Product} from '../models';
+import { Product } from '../models';
 
 @Injectable()
 export class ProductService {
-    private baseUrl = 'http://localhost:8080/api/products';
+    private baseUrl;
 
     constructor(private http: AuthHttp) {
+        this.baseUrl = environment.api.url + '/api/products';
     }
 
     getProducts() {

@@ -1,0 +1,56 @@
+<form #signInForm="ngForm" (ngSubmit)="login()">
+    <md-card>
+        <md-card-header>
+            <md-card-title>Sign in</md-card-title>
+        </md-card-header>
+
+        <md-card-content>
+            <md-form-field>
+                <input mdInput type="email" name="email" [(ngModel)]="data.email" placeholder="Email"
+                       #email="ngModel" required email>
+
+                <md-error *ngIf="email.errors?.email">Please enter a valid <strong>email</strong> address</md-error>
+                <md-error *ngIf="email.errors?.required">Email is <strong>required</strong></md-error>
+            </md-form-field>
+
+            <md-form-field>
+                <input mdInput type="password" name="password" [(ngModel)]="data.password" placeholder="Password"
+                       #password="ngModel" required>
+
+                <md-error *ngIf="password.errors?.required">Email is <strong>required</strong></md-error>
+            </md-form-field>
+
+            <button md-raised-button color="primary" type="submit" [disabled]="!signInForm.form.valid">
+                <span class="fa fa-sign-in"></span>
+                <span>Sign In</span>
+            </button>
+
+            <a md-button routerLink="../forgot-password">Forgot password?</a>
+        </md-card-content>
+    </md-card>
+</form>
+
+<md-card>
+    <md-card-content>
+        <button md-raised-button color="primary" (click)="loginGoogle()" type="button">
+            <span class="fa fa-google"></span>
+            <span>Google</span>
+        </button>
+        <button md-raised-button color="primary" (click)="loginFacebook()" type="button">
+            <span class="fa fa-facebook"></span>
+            <span>Facebook</span>
+        </button>
+    </md-card-content>
+</md-card>
+
+<md-card>
+    <md-card-header>
+        <md-card-title>don't have account?</md-card-title>
+    </md-card-header>
+    <md-card-content>
+        <button md-raised-button color="primary" type="button" routerLink="../signup">
+            <span class="fa fa-user-plus"></span>
+            <span>Free Sign Up</span>
+        </button>
+    </md-card-content>
+</md-card>

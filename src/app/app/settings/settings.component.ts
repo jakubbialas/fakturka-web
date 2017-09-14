@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SettingService} from '../shared/services';
-import {Setting} from '../shared/models';
+import {SettingService} from '../../shared/services';
+import {Setting} from '../../shared/models';
 
 @Component({
     selector: 'app-settings',

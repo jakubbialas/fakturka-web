@@ -2,12 +2,14 @@ import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 
 import {Setting} from '../models';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class SettingService {
-    private baseUrl = 'http://localhost:8080/api/settings';
+    private baseUrl;
 
     constructor(private http: AuthHttp) {
+        this.baseUrl = environment.api.url + '/api/settings';
     }
 
     getSettings() {

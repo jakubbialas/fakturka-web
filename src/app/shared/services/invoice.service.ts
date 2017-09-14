@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
+import { environment } from '../../../environments/environment';
 
 import {Invoice} from '../models';
 
 @Injectable()
 export class InvoiceService {
-    private baseUrl = 'http://localhost:8080/api/invoices';
+    private baseUrl;
 
     constructor(private http: AuthHttp) {
+        this.baseUrl = environment.api.url + '/api/invoices';
     }
 
     getInvoices() {
